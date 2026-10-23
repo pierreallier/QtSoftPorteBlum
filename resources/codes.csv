@@ -1,0 +1,154 @@
+# NOM                           ; CODE  ; TEXT                  # code entre 0 et 255
+# DEFAUT ---------------------------------------------------------------------------------------------------------
+    NONE                        ; 0     ; "none"
+    ERR_CMD_INCONNUE            ; 1     ; "commande inconnue (ou mal formée)"
+    INFO_VERSION_DEV            ; 2     ; "mode ${PROD|DEV}"                    # val : booléen 1=DEV | 0=PROD
+    INFO_VERSION_CARTE          ; 3     ; "version de la carte $"               # val : entier
+    INFO_VERSION_SOFT           ; 4     ; "version du soft $"                   # val : entier 
+    ERR_MESSAGE_PERDU           ; 5     ; "$ message(s) perdu(s)"               # val : nombre de messages perdus
+
+# SECURITES -----------------------------------------------------------------------------------------------------
+    ERR_COURANT                 ; 10    ; "limite de courant atteinte"
+    ERR_BLOCAGE                 ; 11    ; "blocage mécanique détecté"
+    ERR_LIMITE_PORTE            ; 12    ; "limite de la porte atteinte $.2°"    # val : angle de la porte x100 (°)
+    DATA_LIMITE_BASSE           ; 13    ; "limite basse de sécurité $"          # val : valeur BRUTE du capteur étalonné
+    DATA_LIMITE_HAUTE           ; 14    ; "limite haute de sécurité $"          # val : valeur BRUTE du capteur étalonné
+    ERR_PUISSANCE               ; 15    ; "absence de puissance : vérifier l'alimentation électrique ($.2V)" # val : tension mesurée x100 (V)
+
+# CALIBRATION ---------------------------------------------------------------------------------------------------
+    ERR_CALIBRATION_REQUISE     ; 20    ; "calibration requise"
+    ERR_CALIBRATION_ANNULEE     ; 21    ; "calibration interrompue"
+    ERR_NON_CALIBRE             ; 22    ; "système non calibré"
+    INFO_CALIBRATION_DEBUT      ; 23    ; "début de la calibration"
+    INFO_CALIBRATION_ACHEVEE    ; 24    ; "fin de calibration"
+    INFO_CALIBRATION_ECHEC      ; 25    ; "calibration échouée"
+    INFO_CALIBRE                ; 26    ; "système calibré"
+    DATA_COURSE                 ; 27    ; "course du capteur $"                 # val : angle de la porte BRUT
+    DATA_OFFSET                 ; 28    ; "offset du capteur $"                 # val : angle de la porte BRUT
+
+# SET ERR --------------------------------------------------------------------------------------------------------
+    ERR_CMD_SET_INCONNUE        ; 30    ; "commande set inconnue : valeur attendue : COURANT / CALIBRATION / MODE / CONSIGNE / PID / MESURES / ACCEL / BUZZER"
+    ERR_COURANT_SET             ; 31    ; "limite de courant incompatible (entre 0 et 2.5A) : valeur non modifiée "
+    ERR_CALIBRATION_SET         ; 32    ; "commande set calibration inconnue : valeur attendue : ON / OFF / EFFACER"
+    ERR_PILOTAGE_SET            ; 33    ; "mode de pilotage inconnu : valeur attendue : PWM / POSITION / VITESSE / POSITION_VITESSE"
+    ERR_CONSIGNE_SET            ; 34    ; "type de consigne inconnu : valeur attendue : POTENTIOMETRE / ECHELON / RAMPE / TRAPEZE / SINUS / TABLEAU / TEST"
+    ERR_PID_TYPE_SET            ; 35    ; "type de PID inconnu : valeur attendue VITESSE / POSITION"
+    ERR_PID_SET                 ; 36    ; "réglage PID erronné : TYPE [VITESSE|POSITION] KP KI KD attendu" 
+    ERR_ACCEL_SET               ; 37    ; "commande set accéléromètre inconnue : valeur attendue : ON / OFF"
+    ERR_BUZZER_SET              ; 38    ; "commande set buzzer inconnue : valeur attendue : ON / OFF"
+    ERR_FREQ_MESURES_SET        ; 39    ; "réglage de la fréquence de mesures : période manquante ou invalide (0 à 1000)"
+    
+# SET OK ------------------------------------------------------------------------------------------------------- 
+    INFO_COURANT_SET            ; 40    ; "limite de courant modifiée"
+    INFO_CALIBRATION_SET        ; 41    ; "commande set calibration faite"
+    INFO_CONSIGNE_SET           ; 42    ; "consigne mise à jour"
+    INFO_PID_SET                ; 43    ; "configuration du PID effectuée"
+    INFO_ACCEL_SET              ; 44    ; "${désactivation|activation} de l'accéléromètre"
+    INFO_MESURES_SAUVEGARDE     ; 45    ; "période d'envoi des mesures enregistrée à : $ ms"   # val : temps en ms
+
+# GET ----------------------------------------------------------------------------------------------------------
+    ERR_CMD_GET_INCONNUE        ; 50    ; "commande get inconnue : valeur attendue : LIMITS / CALIBRATION / MODE / PID / MESURES / ACCEL / BUZZER"
+    ERR_MODE_GET                ; 51    ; "mode de pilotage erroné"
+    ERR_MESURE_GET              ; 52    ; "commande get mesures : capteur inconnu"
+    INFO_ACCEL_GET              ; 53    ; "accéléromètre ${désactivé|activé}"
+    INFO_BUZZER                 ; 55    ; "buzzer ${désactivé|activé}"
+    DATA_LIMITE_COURANT         ; 56    ; "limite de courant du moteur $.2A"      # val : courant (*100)A
+
+# DO -----------------------------------------------------------------------------------------------------------
+    INFO_DO_FONCTIONNEMENT      ; 59    ; "demande état ACTIONNER"
+    ERR_CMD_DO_INCONNUE         ; 60    ; "commande do inconnue : valeur attendue : RESET / INIT / OUVRIR / FERMER / STOP / PILOTER / CALIBRATION / TEST"
+    INFO_DO_RESET               ; 61    ; "demande reset carte"
+    INFO_DO_INIT                ; 62    ; "demande état INIT"
+    INFO_DO_OUVRIR              ; 63    ; "demande état OUVRIR"
+    INFO_DO_FERMER              ; 64    ; "demande état FERMER"
+    INFO_DO_STOP                ; 65    ; "demande état STOP"
+    INFO_DO_PILOTER             ; 66    ; "demande état PILOTER"
+    INFO_DO_CALIBRATION         ; 67    ; "demande état CALIBRATION"
+    INFO_DO_TEST                ; 68    ; "test de la carte demandé"   
+    ERR_TEST_IMPOSSIBLE         ; 69    ; "demande de test impossible : uniquement au repos ou en calibration"
+
+# INITIALISATION -------------------------------------------------------------------------------------------------
+    INFO_INIT_DEBUT             ; 70    ; "==== Pilotage Porte Blum ===="
+    INFO_INIT_FIN               ; 71    ; "== Initialisation terminée =="
+    ERR_INIT                    ; 72    ; "erreur d'initialisation"
+    INFO_DEV                    ; 73    ; "version de développement"
+    ERR_CAPTEUR_ABSENT          ; 74    ; "codeur absolu de la porte non détecté"
+    INFO_CAPTEUR_PRESENT        ; 75    ; "codeur absolu de la porte détecté"
+    INFO_ACCEL_PRESENT          ; 76    ; "accéléromètre détecté"
+    ERR_ACCEL_ABSENT            ; 77    ; "accéléromètre non détecté"
+    INFO_BUZZER_ACTIVE          ; 78    ; "buzzer activé"
+    INFO_BUZZER_DESACTIVE       ; 79    ; "buzzer désactivé"
+
+# PILOTAGE -----------------------------------------------------------------------------------------------------
+    ERR_CONSIGNE_EN_PILOTAGE    ; 80    ; "impossible de changer de consigne pendant le pilotage : le système doit être au repos"
+    DATA_MODE_PWM               ; 81    ; "mode de pilotage PWM"
+    DATA_MODE_POSITION          ; 82    ; "mode de pilotage en position"
+    DATA_MODE_VITESSE           ; 83    ; "mode de pilotage en vitesse"
+    DATA_MODE_PV                ; 84    ; "mode de pilotage en vitesse et position"
+    INFO_PILOTAGE_DEMARRE       ; 85    ; "pilotage démarré"
+    INFO_PILOTAGE_FINI          ; 86    ; "pilotage terminé"
+    ERR_PILOTAGE_STOPPE         ; 87    ; "pilotage interrompu"
+
+# CONSIGNE------------------------------------------------------------------------------------------------------
+    ERREUR_CONSIGNE_PARAMETRES  ; 90    ; "nombre de paramètres pour la consigne invalide"
+    ERREUR_CONSIGNE_DUREE       ; 91    ; "durée(s) de consigne invalide (100 à 10000 ms)"
+    ERREUR_CONSIGNE_VALEUR      ; 92    ; "valeur(s) de consigne invalide (non finie)"
+    ERREUR_CONSIGNE_PERIODE     ; 93    ; "période de consigne invalide (supérieure à 0 ms)"
+    ERREUR_CONSIGNE_NBPOINTS    ; 94    ; "nombre de points de consigne TABLEAU invalide (supérieur à 0)"
+    ERREUR_CONSIGNE_MEMOIRE     ; 95    ; "mémoire de consigne TABLEAU saturée (max 100 points)"
+    ERREUR_CONSIGNE_INIT        ; 96    ; "consigne TABLEAU non initialisée : SET CONSIGNE TABLEAU <nbPoints> requis avant d'ajouter des points"
+
+# PID ----------------------------------------------------------------------------------------------------------
+    DATA_PID_VITESSE_KP         ; 100    ; "PID vitesse :  Kp = $.3"      #val : valeur *1000
+    DATA_PID_VITESSE_KI         ; 101    ; "PID vitesse :  Ki = $.3"      #val : valeur *1000
+    DATA_PID_VITESSE_KD         ; 102    ; "PID vitesse :  Kd = $.3"      #val : valeur *1000
+    DATA_PID_POSITION_KP        ; 103    ; "PID position : Kp = $.3"      #val : valeur *1000
+    DATA_PID_POSITION_KI        ; 104    ; "PID position : Ki = $.3"      #val : valeur *1000
+    DATA_PID_POSITION_KD        ; 105    ; "PID position : Kd = $.3"      #val : valeur *1000
+
+#TEST ------------------------------------------------------------------------------------------------------
+    INFO_TEST_DEBUT             ; 110    ; "debut du mode test (DO STOP pour quitter)"
+    INFO_TEST_CAPTEURS_FIN      ; 111    ; "sequence test terminée, entrées toujours surveillées (DO STOP pour quitter)"
+    INFO_TEST_FIN               ; 112    ; "fin du mode test"
+    INFO_TEST_ACTIF             ; 113    ; "mode test toujours actif : DO STOP pour quitter"
+    DATA_TEST_ENTREES           ; 114    ; "état des entrées : $"
+    DATA_TEST_SORTIES           ; 115    ; "état des sorties : $"
+    TEST_I2C_CODEUR_PORTE       ; 116    ; "test I2C du codeur absolu de la porte : ${KO|OK}"   # val : KO=0 ou OK=1
+    TEST_I2C_ACCELEROMETRE      ; 117    ; "test I2C de l'accéléromètre : ${KO|OK}"             # val : KO=0 ou OK=1
+    TEST_BT_MOUVEMENT           ; 118    ; "test bouton mouvement : ${RELACHE|PRESSE}"          # val : RELACHE=0 ou PRESSE=1
+    TEST_BT_WIRELESS            ; 119    ; "test bouton wireless : ${RELACHE|PRESSE}"           # val : RELACHE=0 ou PRESSE=1
+    TEST_BT_CALIBRATION         ; 120    ; "test bouton calibration : ${RELACHE|PRESSE}"        # val : RELACHE=0 ou PRESSE=1
+    TEST_BT_PILOTAGE            ; 121    ; "test bouton pilotage : ${RELACHE|PRESSE}"           # val : RELACHE=0 ou PRESSE=1
+    TEST_LED_ERROR              ; 122    ; "test LED ERREUR"                     
+    TEST_LED_MOTOR              ; 123    ; "test LED MOTEUR"                  
+    TEST_LED_CALIBRATION        ; 124    ; "test LED CALIBRATION"                  
+    TEST_LED_PILOTAGE           ; 125    ; "test LED PILOTAGE"
+    TEST_BUZZER                 ; 126    ; "test BUZZER"                         
+    TEST_CAPTEUR_TENSION_MOTEUR ; 127    ; "test capteur TENSION MOTEUR : $"         # val : valeur de la tension moteur brute
+    TEST_CAPTEUR_COURANT_DRIVER ; 128    ; "test capteur COURANT DRIVER : $"         # val : valeur du courant driver brute
+    TEST_CAPTEUR_COURANT_MOTEUR ; 129    ; "test capteur COURANT MOTEUR : $"         # val : valeur du courant moteur brute
+    TEST_CAPTEUR_CODEUR_PORTE   ; 130    ; "test capteur CODEUR PORTE : $"           # val : valeur du codeur de porte brute
+    TEST_CAPTEUR_MEUBLE         ; 131    ; "test capteur DETECTEUR MEUBLE : $"       # val : valeur du détecteur de meuble brute
+    TEST_CAPTEUR_POTENTIOMETRE  ; 132    ; "test capteur POTENTIOMETRE : $"          # val : valeur du potentiometre brute
+
+#MESURES -------------------------------------------------------------------------------------------------------
+    INFO_MESURES_DESACTIVE      ; 150   ; "envoi des mesures désactivé"
+    DATA_FREQ_MESURES           ; 151   ; "envoi des mesures toutes les $ ms"   # val : temps en ms
+    DATA_ANGLE_PORTE            ; 152   ; "angle de la porte $.2°"              # val : angle (*100)°
+    DATA_TENSION                ; 153   ; "tension d'alimentation $.2V"         # val : tension (*100)V
+    DATA_COURANT                ; 154   ; "courant moyen consommé $.2A"         # val : courant (*100)A
+    DATA_ANGLE_MOTEUR           ; 155   ; "angle moteur $.2°"                   # val : angle (*100)°
+    DATA_VITESSE_MOTEUR         ; 156   ; "vitesse moteur $.2 rad/s"            # val : vitesse (*100)rad/s
+    DATA_PWM                    ; 157   ; "PWM moteur $.2"                      # val : PWM (*100)
+    DATA_CONSIGNE               ; 158   ; "consigne moteur $.2 (PWM,°,rad/s)"   # val : (*100) PWM ou angle ou rad/s
+    INFO_SUR_MEUBLE             ; 159   ; "servodrive monté sur le meuble"
+    INFO_DEMONTE                ; 160   ; "servodrive non monté sur le meuble"
+    INFO_BN0055_ABSENT          ; 161   ; "capteur BN0055 absent"
+    INFO_BN0055_PRESENT         ; 162   ; "capteur BN0055 détecté"
+    DATA_TENSION_MOTEUR         ; 163   ; "tension moteur $.2V"                 # val : tension moteur (*100)V
+    DATA_LAST_COURANT           ; 164   ; "dernier courant moteur mesuré $.2A"  # val : dernier courant moteur (*100)A
+
+#ETATS ---------------------------------------------------------------------------------------------------------
+    ETAT_PROD                   ; 250   ; "etat de prod"
+    ETAT_CALIBRATION            ; 251   ; "etat de calibration"
+    ETAT_PILOTAGE               ; 252   ; "etat de pilotage"

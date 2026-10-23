@@ -1,0 +1,27 @@
+# TYPE  ; ETAT               ; VALEUR ; NOM
+  PROD  ; INIT               ; 0      ; INIT
+  PROD  ; REPOS              ; 1      ; REPOS
+  PROD  ; FONCTIONNEMENT     ; 2      ; FONCTIONNEMENT
+  PROD  ; OUVERTURE          ; 3      ; OUVERTURE
+  PROD  ; FERMETURE          ; 4      ; FERMETURE
+  PROD  ; PILOTAGE           ; 5      ; PILOTAGE
+  PROD  ; CALIBRATION        ; 6      ; CALIBRATION
+  PROD  ; CALIBRATION_REQUIS ; 7      ; CALIBRATION_REQUIS
+  PROD  ; DEBRAYAGE          ; 8      ; DEBRAYAGE
+  PROD  ; ERREUR             ; 9      ; ERREUR
+  PROD  ; NO_POWER           ; 10     ; NO_POWER
+
+  CALI  ; INIT               ; 20     ; INIT
+  CALI  ; OUVERTURE          ; 21     ; OUVERTURE
+  CALI  ; ATTENTE_HAUT       ; 22     ; ATTENTE_HAUT
+  CALI  ; BUTEE_BASSE        ; 23     ; BUTEE_BASSE
+  CALI  ; ATTENTE_BAS        ; 24     ; ATTENTE_BAS
+  CALI  ; BUTEE_HAUTE        ; 25     ; BUTEE_HAUTE
+  CALI  ; ENREGISTREMENT     ; 26     ; ENREGISTREMENT
+  CALI  ; ERREUR             ; 27     ; ERREUR
+  CALI  ; FIN                ; 28     ; FIN
+
+  PILOTE; INIT               ; 40     ; INIT
+  PILOTE; EN_COURS           ; 41     ; EN_COURS
+  PILOTE; ERREUR             ; 42     ; ERREUR
+  PILOTE; FIN                ; 43     ; FIN

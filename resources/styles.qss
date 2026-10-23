@@ -1,0 +1,430 @@
+/* Theme de SoftPorteBlum -- ressources embarquees, recompiler apres modification.
+   Palette : orange #F75A1B, rouge #DC2626, vert #16A34A, bleu #2563EB.
+   Fond accentue #FDEAE2 ; texte #1F2937 ; texte secondaire #6B7280.
+   QSS ne prend pas en charge les variables CSS.
+   Ordre : controles generiques, elements partages, composants specialises.
+   Les qproperty-* pilotent les dessins QPainter des composants personnalises. */
+
+/* ========================================================================== */
+/* 1. Style general : typographie, fonds et controles generiques */
+/* ========================================================================== */
+
+QWidget { color: #1F2937; font-family: "Segoe UI"; font-size: 9.75pt; }
+
+QMainWindow, QDialog, QStatusBar { background-color: #F3F4F6; }
+
+QTabWidget > QWidget > QWidget { background-color: white; }
+
+QLabel { background-color: transparent; }
+
+QPushButton {
+    background-color: #FFFFFF;
+    border: 1px solid #D8DEE9;
+    border-radius: 6px;
+    padding: 5px 12px;
+    min-height: 22px;
+    /* SVG : zone de dessin 16 px + espace transparent de 4 px à droite. */
+    qproperty-iconSize: 20px 16px;
+}
+QPushButton:focus { background-color: #E5E7EB; border-color: #9CA3AF; }
+QPushButton:hover { background-color: #FDEAE2; border-color: #F75A1B; }
+QPushButton:pressed { background-color: #FDEAE2; border-color: #F75A1B; }
+QPushButton:checked { background-color: #9CA3AF; }
+QPushButton:checked:hover { background-color: #F75A1B; border-color: #F75A1B; }
+QPushButton:disabled { background-color: #E5E7EB; color: #9CA3AF; border: 1px solid #D8DEE9; }
+
+QTextEdit { font-family: "Consolas", "Courier New"; font-size: 13px; background-color: white; border: 1px solid #D8DEE9; border-radius: 4px; padding: 6px; selection-background-color: #FDEAE2; selection-color: #1F2937; }
+
+QGroupBox { border: 1px solid #B0B0B0; border-radius: 4px; margin-top: 12px; padding: 12px; }
+QGroupBox::title { subcontrol-origin: margin; left: 8px; padding: 0 4px; font-weight: bold; }
+
+QSplitter::handle { background-color: #F3F4F6; width: 6px; }
+
+QToolTip { background-color: white; color: #1F2937; border: 1px solid #D8DEE9; padding: 5px; }
+
+QTabWidget::pane, QFrame#cadreVisualisationMesures {
+    border: 1px solid #D8DEE9;
+    border-radius: 8px;
+    background-color: white;
+}
+
+QWidget#fenetreMesures { background-color: #F3F4F6; }
+
+QFrame#cadreInformationsMesures {
+    border: 1px solid #D8DEE9;
+    border-radius: 8px;
+    background-color: #E5E7EB;
+}
+
+QFrame#cadreInformationsMesures QFrame[class="separateurVertical"] {
+    border-left-color: #9CA3AF;
+}
+
+QTabBar::tab {
+    background-color: transparent;
+    color: #6B7280;
+    min-width: 110px;
+    min-height: 36px;
+    padding: 2px 14px;
+    margin-right: 4px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-size: 18px;
+    font-weight: 500;
+}
+QTabBar::tab:hover { color: #F75A1B; background-color: #FDEAE2; }
+QTabBar::tab:selected { color: #F75A1B; font-weight: 800; border-bottom: 3px solid #F75A1B; }
+QTabBar::tab:first { margin-left: 15px; }
+
+
+QStatusBar { font-size: 14px; }
+QStatusBar::item { border: none; }
+QStatusBar QLabel { font-size: 14px; padding-bottom: 4px;}
+
+QProgressBar {
+    min-height: 22px;
+    border: 1px solid #D8DEE9;
+    border-radius: 6px;
+    background-color: #F3F4F6;
+    color: #1F2937;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+QProgressBar::chunk { background-color: #F75A1B; border-radius: 5px; }
+
+QCheckBox { spacing: 6px; }
+QCheckBox::indicator, QGroupBox::indicator {
+    width: 16px; height: 16px; border-radius: 4px;
+    border: 1px solid #6B7280; background-color: #F3F4F6;
+}
+QCheckBox::indicator:hover, QGroupBox::indicator:hover { border-color: #F75A1B; }
+QCheckBox::indicator:checked, QGroupBox::indicator:checked {
+    background-color: #F75A1B; border-color: #F75A1B; image: url(:/icons/check.svg);
+}
+QCheckBox::indicator:indeterminate, QGroupBox::indicator:indeterminate {
+    background-color: #FDEAE2; border-color: #F75A1B;
+}
+QCheckBox:disabled { color: #9CA3AF; }
+QCheckBox::indicator:disabled, QGroupBox::indicator:disabled {
+    background-color: #E5E7EB; border-color: #9CA3AF;
+}
+
+QComboBox {
+    min-width: 42px; min-height: 20px; padding: 2px 26px 2px 8px;
+    border: 1px solid #D8DEE9; border-radius: 6px; background-color: white; color: #1F2937;
+}
+QComboBox:hover { border-color: #F75A1B; }
+QComboBox#typeConsigne { min-width: 0; }
+QComboBox:enabled:focus { border: 1px solid #000000; } /* Focus clavier distinct du survol, sans modifier les dimensions du controle. */
+
+QComboBox::drop-down {
+    subcontrol-origin: padding; subcontrol-position: top right;
+    width: 22px; border: none; border-left: 1px solid #E5E7EB;
+}
+QComboBox::down-arrow { image: url(:/icons/chevron-down.svg); width: 12px; height: 12px; }
+QComboBox QAbstractItemView {
+    background-color: white; border: 1px solid #D8DEE9; padding: 3px;
+    selection-background-color: transparent; selection-color: #1F2937; outline: none;
+    show-decoration-selected: 1;
+}
+QComboBox QAbstractItemView::item {
+    min-height: 22px;
+    margin: 2px 0;
+    padding: 2px 8px 2px 5px;
+    border-left: 3px solid transparent;
+}
+ QComboBox QAbstractItemView::item:selected {
+    background-color: transparent;
+    color: #1F2937;
+    border-left: 3px solid #F75A1B; 
+} 
+QComboBox QAbstractItemView::item:hover,
+QComboBox QAbstractItemView::item:selected:hover {
+    background-color: #FDEAE2;
+}
+QComboBox:disabled { background-color: #F3F4F6; color: #9CA3AF; border-color: #E5E7EB; }
+QComboBox QLineEdit { border: none; border-radius: 0; padding: 0; background: transparent; }
+QComboBox:disabled QLineEdit { color: #9CA3AF; }
+
+QToolButton { border: none; background: transparent;}
+
+QTableWidget {
+    selection-background-color: #FDEAE2;
+    selection-color: #1F2937;
+}
+QTableWidget QHeaderView::section {
+    font-weight: bold;
+}
+QTableWidget::item:selected {
+    background-color: #FDEAE2;
+    color: #1F2937;
+}
+QPushButton[class="boutonIconeConsigne"] {
+    qproperty-iconSize: 16px 16px;
+    min-width: 22px;
+    min-height: 0;
+    padding: 4px;
+}
+
+/* Error messages: constrain only the text width; Qt calculates the height.
+   min-width + max-width is the documented QSS way to fix a widget width. */
+QMessageBox QLabel#qt_msgbox_informativelabel,
+QMessageBox#errorDialog QLabel#qt_msgbox_label {
+    min-width: 390px;
+    max-width: 390px;
+    qproperty-wordWrap: true;
+}
+
+/* Les QLineEdit et QDoubleSpinBox gardent leur dessin natif.
+   Leur palette de focus est configuree au demarrage dans main.cpp. */
+
+/* ========================================================================== */
+/* 2. Elements partages : separateurs et panneaux de courbes */
+/* ========================================================================== */
+
+QFrame[class="separateurVertical"] {
+    border: none;
+    border-left: 1px solid #D8DEE9;
+    border-radius: 0;
+    background-color: transparent;
+    min-width: 1px;
+    max-width: 1px;
+}
+
+/* ========================================================================== */
+/* 3. Commandes : boutons colores et etats de fonctionnement */
+/* ========================================================================== */
+
+/* Geometrie commune aux commandes colorees ; les regles suivantes donnent les couleurs. */
+QPushButton#boutonSauvegarder, QPushButton#boutonOuvrir,
+QPushButton#boutonRunStop, QPushButton#boutonCalibration {
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 5px 20px;
+    font-weight: bold;
+}
+
+QPushButton#boutonSauvegarder, QPushButton#boutonOuvrir {
+    background-color: #2563EB;
+    text-align: center;
+}
+QPushButton#boutonSauvegarder:enabled:hover,
+QPushButton#boutonOuvrir:enabled:hover { background-color: #1E40AF; }
+QPushButton#boutonSauvegarder:enabled:pressed,
+QPushButton#boutonOuvrir:enabled:pressed { background-color: #1E3A8A; }
+
+/* Les couleurs d'etat et de survol ne s'appliquent qu'aux boutons actifs.
+   Un bouton desactive reste gris, meme coche et survole. */
+QPushButton#boutonRunStop:enabled { background-color: #16A34A; }
+QPushButton#boutonRunStop:enabled:hover { background-color: #15803D; }
+QPushButton#boutonRunStop:enabled:pressed { background-color: #166534; }
+QPushButton#boutonRunStop:enabled:checked { background-color: #DC2626; }
+QPushButton#boutonRunStop:enabled:checked:hover { background-color: #B91C1C; }
+QPushButton#boutonRunStop:enabled:checked:pressed { background-color: #991B1B; }
+
+QPushButton#boutonCalibration {
+    background-color: #6B7280;
+}
+QPushButton#boutonCalibration:hover { background-color: #4B5563; }
+QPushButton#boutonCalibration:pressed { background-color: #374151; }
+
+QPushButton#boutonRunStop:disabled, 
+QPushButton#boutonCalibration:disabled, 
+QPushButton#boutonOuvrir:disabled, 
+QPushButton#boutonSauvegarder:disabled {
+    background-color: #E5E7EB;
+    color: #9CA3AF;
+    border: 1px solid #D8DEE9;
+}
+
+/* ========================================================================== */
+/* 4. MainWindow : logo, barre de statut et securite */
+/* ========================================================================== */
+
+QPushButton#logo { 
+    image: url(:/icons/logo.svg);
+    background: transparent; 
+    border: none;
+    padding: 0; 
+    min-width: 90px; 
+    max-width: 90px; 
+    min-height: 30px; 
+    max-height: 30px; 
+}
+QPushButton#logo:hover { background: transparent; }
+
+QLabel#placeholder {
+    color: #6B7280;
+    font-size: 16px;
+    background: white;
+    border: 1px solid #B0B0B0;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+QLabel#sectionTitle { font-weight: 600; padding: 0 0 4px 0; }
+
+QLabel#measurementSummary { color: #6B7280; padding: 6px; }
+
+StatusIndicator { 
+    color: #6B7280; 
+    height: 14px;
+    width: 14px;
+}
+StatusIndicator[state="error"] { color: #DC2626; }
+StatusIndicator[state="warning"] { color: #F75A1B; }
+StatusIndicator[state="ok"] { color: #16A34A; }
+StatusIndicator:disabled { color: #6B7280; }
+
+QPushButton#serialwidget, QLabel#statuswidget {
+    padding: 0 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+QPushButton#boutonReset { 
+    min-width: 22px;
+    max-width: 22px;
+    min-height: 22px;
+    max-height: 22px;
+    color: #DC2626; 
+    font-weight: bold; 
+    background-color: transparent;
+    border: 2px solid #DC2626; 
+    border-radius: 4px; 
+    padding: 0px;
+}
+QPushButton#boutonReset:hover { color: white; background-color: #DC2626;}
+QPushButton#boutonReset:pressed {background-color: #991B1B; border-color: #991B1B;}
+QPushButton#boutonReset:disabled { background: transparent; border-color: #D1D5DB; color: #9CA3AF; }
+
+
+/* ========================================================================== */
+/* 6. GraphWidget : courbes, legende et valeurs */
+/* ========================================================================== */
+GraphWidget {
+    qproperty-gridColor: #DDDDDD;
+    qproperty-axisColor: #6B7280;
+    qproperty-cursorColor: #000000;
+    qproperty-curveWidth: 2;
+    qproperty-accelerometerCurveWidth: 1;
+    qproperty-canvasBackgroundColor: #FFFFFF;
+    qproperty-plotBorderColor: #6B7280;
+    qproperty-cursorWidth: 1;
+}
+
+QWidget#graphiqueCanvas { min-width: 240px; min-height: 200px; }
+
+QFrame#cadreValeurs { 
+    min-width: 210px; 
+    max-width: 210px;
+    border: 1px solid #B0B0B0; 
+    border-radius: 4px;
+}
+
+QLabel#graphiqueValeursTitre { font-weight: bold; }
+
+QPushButton#boutonPleineEchelle {
+    qproperty-iconSize: 16px 16px;
+    padding: 0;
+    min-width: 26px; 
+    max-width: 26px; 
+    min-height: 26px; 
+    max-height: 26px;
+}
+
+/* Geometrie des indicateurs dessines avec QPainter (heritee par les axes). */
+ColorCheckBox {
+    qproperty-indicatorSize: 16;
+    qproperty-indicatorBorderWidth: 1.3;
+    qproperty-indicatorRadius: 2;
+    qproperty-checkWidth: 1.6;
+}
+
+AxisColorCheckBox {
+    qproperty-indicatorSize: 20;
+    /* Bordure et fond coche lorsque le controle est desactive. */
+    qproperty-disabledColor: #9CA3AF;
+    /* Lettre blanche si cochee et desactivee, grise si decochee. */
+    qproperty-disabledSymbolColor: #FFFFFF;
+    qproperty-uncheckedSymbolColor: #9CA3AF;
+    qproperty-symbolBold: true;
+}
+
+/* Marges intérieures des cadres de légende : haut/bas, gauche/droite. */
+QGroupBox[class="panneauCourbes"] { padding: 4px 15px; }
+QGroupBox#mesuresCourbes { padding: 2px 8px; }
+QGroupBox#centraleInertielle { padding: 15px; }
+
+QLabel[class="valeurInertielle"]:disabled { color: #9CA3AF; }
+
+/* ========================================================================== */
+/* 7. PilotageWidget, PIDWidget et ConsigneWidget */
+/* ========================================================================== */
+
+QGroupBox#consigne { padding-bottom: 2px; }
+
+QDialog#pilotageProgress QLabel#pilotageProgressMessage {
+    font-size: 14px;
+    padding: 0;
+    min-height: 24px;
+    max-height: 24px;
+}
+
+QDialog#pilotageProgress {
+    min-width: 480px;
+    max-width: 480px;
+    min-height: 120px;
+    max-height: 120px;
+}
+
+/* Hauteur totale de 28px, dont deux bordures de 1px. */
+QDialog#pilotageProgress QProgressBar { min-height: 26px; max-height: 26px; }
+
+QWidget#pilotageControls { background-color: white; }
+
+PIDWidget, ConsigneWidget, QGroupBox#asservissement { background-color: transparent; }
+
+ConsigneWidget, QGroupBox#asservissement { padding-left: 4px; padding-right: 4px; }
+
+QGroupBox#asservissement { margin-top: 12px; padding-top: 4px; }
+
+QGroupBox#asservissement::title, QGroupBox#centraleInertielle::title { position: relative; top: 0px; }
+
+QGroupBox#asservissement::indicator, QGroupBox#centraleInertielle::indicator {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+}
+
+QWidget#apercuConsigne { max-height: 150px; }
+
+ConsigneWidget {
+    qproperty-previewCurveColor: #F75A1B;
+    qproperty-previewZeroColor: #808080;
+    qproperty-previewCurveWidth: 3;
+    qproperty-previewBackgroundColor: #FFFFFF;
+    qproperty-previewAxisColor: #000000;
+    qproperty-previewZeroWidth: 1;
+}
+
+/* ========================================================================== */
+/* 8. StateGraphWidget : dessin des machines a etats */
+/* ========================================================================== */
+
+StateGraphWidget QLabel { color: #6B7280; }
+
+StateGraphWidget {
+    qproperty-stateBorderColor: #6B7280;
+    qproperty-stateBackgroundColor: #F1F5F9;
+    qproperty-activeBorderColor: #F75A1B;
+    qproperty-activeBackgroundColor: #FDEAE2;
+    qproperty-hoverBorderColor: #F75A1B;
+    qproperty-hoverBackgroundColor: #FDEAE2;
+    min-width: 200px;
+    min-height: 320px;
+    qproperty-borderWidth: 2;
+    qproperty-activeTextBold: true;
+}

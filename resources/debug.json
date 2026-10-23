@@ -1,0 +1,15 @@
+{
+  "types": [
+    {"type":"E","foreground":"#DC2626","background":null,"justify":"left","underline":null,"overstrike":null,"prefix":null,"message":"Erreur : $"},
+    {"type":"W","foreground":"#F75A1B","background":null,"justify":"left","underline":null,"overstrike":null,"prefix":null,"message":"Avertissement : $"},
+    {"type":"S","foreground":"#16A34A","background":null,"justify":"left","underline":null,"overstrike":null,"prefix":null,"message":"Etat : $"},
+    {"type":"I","foreground":"#2563EB","background":null,"justify":"left","underline":null,"overstrike":null,"prefix":null,"message":"$"},
+    {"type":"O","foreground":"#2563EB","background":null,"justify":"left","underline":null,"overstrike":null,"prefix":"◀","message":"$"},
+    {"type":"N","foreground":"#DC2626","background":null,"justify":"left","underline":null,"overstrike":null,"prefix":"◀","message":"$"},
+    {"type":"R","foreground":null,"background":null,"justify":"left","underline":null,"overstrike":null,"prefix":"◀","message":"$"},
+    {"type":"Q","foreground":null,"background":null,"justify":"left","underline":true,"overstrike":null,"prefix":"▶","message":"$"},
+    {"type":"M","foreground":null,"background":null,"justify":"left","underline":null,"overstrike":null,"prefix":null,"message":"$.3s  U=$2.2V  I=$2.2A  θ=$4.2°  Ω=$4.2rad/s  α=$4.2°  Cons=$4.2"},
+    {"type":"A","foreground":null,"background":null,"justify":"left","underline":null,"overstrike":null,"prefix":"◀","message":"$.3s  γ=($6.0,$6.0,$6.0)m/s²  ω=($5.2,$5.2,$5.2)°/s  β=($5.2,$5.2,$5.2)°"},
+    {"type":"T","foreground":null,"background":null,"justify":"left","underline":null,"overstrike":null,"prefix":null,"message":"$"}
+  ]
+}

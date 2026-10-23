@@ -1,0 +1,7 @@
+build/
+build-check/
+cmake/*
+!cmake/GenerateProtocol.cmake
+Microsoft/
+.vscode/
+*.user

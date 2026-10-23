@@ -1,0 +1,34 @@
+<RCC>
+    <qresource prefix="/">
+        <file>styles.qss</file>
+        <file>config.ini</file>
+        <file>protocol.json</file>
+        <file>icons/logo.svg</file>
+        <file>icons/icone.svg</file>
+        <file>icons/icone.ico</file>
+        <file>codes.csv</file>
+        <file>machines.json</file>
+        <file>etats.csv</file>
+        <file>courbe.json</file>
+        <file>debug.json</file>
+        <file>icons/check.svg</file>
+        <file>icons/add-point.svg</file>
+        <file>icons/reset-values.svg</file>
+        <file>icons/remove-point.svg</file>
+        <file>icons/FONT-AWESOME-LICENSE.txt</file>
+        <file>icons/chevron-down.svg</file>
+        <file>icons/connect.svg</file>
+        <file>icons/disconnect.svg</file>
+        <file>icons/open.svg</file>
+        <file>icons/save.svg</file>
+        <file>icons/play.svg</file>
+        <file>icons/stop.svg</file>
+        <file>icons/calibrate.svg</file>
+        <file>icons/send.svg</file>
+        <file>icons/clear.svg</file>
+        <file>icons/scroll.svg</file>
+        <file>icons/full-scale.svg</file>
+        <file>qtbase_fr.qm</file>
+        <file>icons/splashscreen.svg</file>
+    </qresource>
+</RCC>

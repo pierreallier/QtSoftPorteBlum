@@ -1,0 +1,14 @@
+{
+  "time": {"nom":"Temps","unite":"s","echelle":null,"facteur":0.001},
+  "courbes": [
+    {"source":"Mesures","id":6,"nom":"Consigne","unite":"","echelle":255,"facteur":0.01,"couleur":"#000000"},
+    {"source":"Mesures","id":5,"nom":"Angle porte","unite":"°","echelle":360,"facteur":0.01,"couleur":"#17BECF"},
+    {"source":"Mesures","id":1,"nom":"Tension moteur","unite":"V","echelle":24,"facteur":0.01,"couleur":"#1F77B4"},
+    {"source":"Mesures","id":2,"nom":"Courant moteur","unite":"A","echelle":5,"facteur":-0.01,"couleur":"#D62728"},
+    {"source":"Mesures","id":3,"nom":"Angle moteur","unite":"°","echelle":null,"facteur":0.01,"couleur":"#FF7F0E"},
+    {"source":"Mesures","id":4,"nom":"Vitesse moteur","unite":"rad/s","echelle":null,"facteur":0.01,"couleur":"#2CA02C"},
+    {"source":"Acceleration","id":1,"nom":"Accélération","unite":"m/s","echelle":40,"facteur":0.01,"couleurs":["#393B79","#6B6ECF","#9C9EDE"]},
+    {"source":"Acceleration","id":4,"nom":"Vitesse","unite":"°/s","echelle":2000,"facteur":0.0625,"couleurs":["#637939","#8CA252","#CEDB9C"]},
+    {"source":"Acceleration","id":7,"nom":"Angle","unite":"°","echelle":180,"facteur":0.01,"couleurs":["#8C6D31","#BD9E39","#E7BA52"]}
+  ]
+}

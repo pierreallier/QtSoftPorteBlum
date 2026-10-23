@@ -1,0 +1,4 @@
+- GaphWidget :stocke les mesures sous forme d'Event et d'un tableau d'entier : 
+    a améliorer en ne stockant que 1 (ou 2) matrices de valeurs
+- SerialDecoder : toutes les vérifications 
+    isStartInitEvent | isEndInitEvent | getVersion | ... dans cette classe plutôt que dans les deux autres ?

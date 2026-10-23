@@ -1,0 +1,65 @@
+{
+    "default_machine": 250,
+    "machines": [
+        {
+            "name": "Production",
+            "code": 250,
+            "etat_diameter": 0.03,
+            "etat_height": 0.5,
+            "etat_width": 0.8,
+            "etat_font_max_px": 16,
+            "type": "PROD",
+            "etats": [
+                {"id":0,"etat":"INIT","x":0.45,"y":0.05,"type":"start"},
+                {"id":1,"etat":"REPOS","x":0.45,"y":0.17,"type":"normal","cmd":"DO STOP"},
+                {"id":2,"etat":"FONCTIONNEMENT","x":0.45,"y":0.34,"type":"normal","cmd":"DO ACTIONNER","alt":"MOUVEMENT\nDEMANDÉ"},
+                {"id":3,"etat":"OUVERTURE","x":0.2,"y":0.51,"type":"normal","cmd":"DO OUVRIR","alt":"OUVRIR"},
+                {"id":4,"etat":"FERMETURE","x":0.7,"y":0.51,"type":"normal","cmd":"DO FERMER","alt":"FERMER"},
+                {"id":5,"etat":"ERREUR","x":0.45,"y":0.67,"type":"normal"},
+                {"id":6,"etat":"DEBRAYAGE","x":0.45,"y":0.83,"type":"normal","cmd":"DO STOP"}
+            ],
+            "transitions": [
+                {"start":0,"points":[],"end":1},
+                {"start":1,"points":[],"end":2},
+                {"start":2,"points":[],"end":3},
+                {"start":2,"points":[],"end":4},
+                {"start":3,"points":[],"end":5},
+                {"start":4,"points":[],"end":5},
+                {"start":3,"points":[{"x":-0.05,"y":0.0},{"x":0.0,"y":0.32}],"end":6},
+                {"start":4,"points":[{"x":0.05,"y":0.0},{"x":0.0,"y":0.32}],"end":6},
+                {"start":5,"points":[],"end":6},
+                {"start":6,"points":[{"x":0.0,"y":0.1},{"x":0.5,"y":0.0},{"x":0.0,"y":-0.76}],"end":1}
+            ]
+        },
+        {
+            "name": "Calibration",
+            "code": 251,
+            "default_state": "FIN",
+            "display_when": {"machine":250,"state":"PROD_CALIBRATION"},
+            "etat_diameter": 0.03,
+            "etat_height": 0.1,
+            "etat_width": 0.8,
+            "etat_font_max_px": 16,
+            "type": "CALI",
+            "etats": [
+                {"id":0,"etat":"INIT","x":0.50,"y":0.05,"type":"start"},
+                {"id":1,"etat":"OUVERTURE","x":0.50,"y":0.15,"type":"normal"},
+                {"id":2,"etat":"ATTENTE_HAUT","alt":"ATTENTE POSITION HAUTE","x":0.5,"y":0.29,"type":"normal"},
+                {"id":3,"etat":"BUTEE_BASSE","alt":"RECHERCHER BUTÉE BASSE","x":0.5,"y":0.43,"type":"normal"},
+                {"id":4,"etat":"ATTENTE_BAS","alt":"ATTENTE POSITION BASSE","x":0.50,"y":0.57,"type":"normal"},
+                {"id":5,"etat":"BUTEE_HAUTE","alt":"RECHERCHER BUTÉE HAUTE","x":0.50,"y":0.71,"type":"normal"},
+                {"id":6,"etat":"ENREGISTREMENT","x":0.50,"y":0.85,"type":"normal"},
+                {"id":7,"etat":"FIN","x":0.50,"y":0.95,"type":"end"}
+            ],
+            "transitions": [
+                {"start":0,"points":[],"end":1},
+                {"start":1,"points":[],"end":2},
+                {"start":2,"points":[],"end":3},
+                {"start":3,"points":[],"end":4},
+                {"start":4,"points":[],"end":5},
+                {"start":5,"points":[],"end":6},
+                {"start":6,"points":[],"end":7}
+            ]
+        }
+    ]
+}
